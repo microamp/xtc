@@ -1,0 +1,2 @@
+# Triggered from Emacs via rest-client.el
+GET http://127.0.0.1:8080/test
