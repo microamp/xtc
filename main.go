@@ -42,7 +42,7 @@ func wait(ctx context.Context) error {
 
 	logger := log.WithFields(log.Fields{"ctxid": ctxID})
 
-	// Toggle between 0 and 2 seconds (Recall: timeout is 1 second)
+	// Sleep for either 0 (no timeout) or 2 seconds (timeout)
 	var secondsToSleep int
 	if time.Now().UnixNano()%2 == 0 {
 		secondsToSleep = 0
