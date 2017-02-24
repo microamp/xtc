@@ -92,5 +92,10 @@ func handleTest(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, fmt.Sprintf("Response within %d second(s)", timeout/time.Second))
+	_, err = fmt.Fprintf(w, fmt.Sprintf("Response within %d second(s)", timeout/time.Second))
+	if err != nil {
+		logger.Errorf("%+v", err)
+		http.Error(w, fmt.Sprintf("%+v", err), http.StatusRequestTimeout)
+		return
+	}
 }
